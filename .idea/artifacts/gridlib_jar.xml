@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="gridlib:jar">
+    <output-path>$PROJECT_DIR$/../../IntelliJCompOutput/artifacts/gridlib_jar</output-path>
+    <root id="archive" name="gridlib.jar">
+      <element id="module-output" name="gridlib" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

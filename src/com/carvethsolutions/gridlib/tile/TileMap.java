@@ -1,8 +1,5 @@
 package com.carvethsolutions.gridlib.tile;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.awt.*;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -20,7 +17,6 @@ public class TileMap implements Iterable<Tile> {
      *
      * @return an Iterator.
      */
-    @NotNull
     @Override
     public Iterator<Tile> iterator() {
         return new TileMapIterator();
@@ -92,8 +88,8 @@ public class TileMap implements Iterable<Tile> {
         this(size,size);
     }
 
-    public void placeTile(Tile t, int x, int y) {
-        data[y][x] = t;
+    public void placeTile(Tile t) {
+        data[t.getY()][t.getX()] = t;
     }
 
     /**

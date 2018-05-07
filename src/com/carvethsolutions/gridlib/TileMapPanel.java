@@ -9,7 +9,7 @@ import java.awt.*;
 import java.util.Iterator;
 
 /**
- * A custom component for displaying a grid
+ * TileMapPanel graphically represents the data held by a TileMap data structure.
  */
 public class TileMapPanel extends JPanel implements Loggable {
 
@@ -81,7 +81,7 @@ public class TileMapPanel extends JPanel implements Loggable {
             }
         }
 
-        // Since the iterator stops before the last colorTile...
+        // Since the iterator stops before the last Tile...
         // Probably a change to the hasNext() function, or the while loop could fix this without the code repetition
         Tile tile = iterator.next();
         if (tile != null) {
@@ -102,12 +102,6 @@ public class TileMapPanel extends JPanel implements Loggable {
                 g.drawLine(0, y, width, y);
             }
         }
-    }
-
-
-    @Override
-    public String getTag() {
-        return "TileMapPanel";
     }
 
     public int getGridScale() {

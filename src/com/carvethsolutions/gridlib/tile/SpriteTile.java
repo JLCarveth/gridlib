@@ -6,27 +6,29 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * An implementation of a Tile that holds an image.
  * @author John on 5/5/2018
  * @project gridlib
  */
-public class SpriteTile implements Tile<Image> {
+public class SpriteTile extends Tile<Image> {
 
-    private Image tileImage;
-
-    private int x,y;
 
     public SpriteTile(String image, int x, int y) {
+        super(x,y);
         try {
-            tileImage = ImageIO.read(new File(image));
+            this.setData(ImageIO.read(new File(image)));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        this.x = x;
-        this.y = y;
     }
 
-    //TODO Add a default constructor that links to a default graphic
+    /**
+     * Constructor with a default sprite prodived
+     */
+    public SpriteTile(int x, int y) {
+        this("res/grass.png", x, y);
+    }
+
     /**
      * The tile paints any data it holds to the graphics object
      *
@@ -35,8 +37,8 @@ public class SpriteTile implements Tile<Image> {
      */
     @Override
     public void paint(Graphics g, int gridScale) {
-        Image image = tileImage.getScaledInstance(gridScale, gridScale, Image.SCALE_DEFAULT);
-        g.drawImage(image, this.x * gridScale, this.y * gridScale, null);
+        this.setData(this.getData().getScaledInstance(gridScale, gridScale, Image.SCALE_FAST));
+        g.drawImage(this.getData(), this.getX() * gridScale, this.getY() * gridScale, null);
     }
 
     /**
@@ -46,6 +48,9 @@ public class SpriteTile implements Tile<Image> {
      */
     @Override
     public Image clearData() {
-        return null;
+        Image image = this.getData();
+        this.setData(null);
+
+        return image;
     }
 }
