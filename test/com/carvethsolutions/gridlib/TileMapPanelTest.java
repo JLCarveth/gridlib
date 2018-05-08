@@ -2,6 +2,7 @@ package com.carvethsolutions.gridlib;
 
 import com.carvethsolutions.gridlib.tile.SpriteTile;
 import com.carvethsolutions.gridlib.tile.TileMap;
+import com.carvethsolutions.gridlib.view.TileMapPanel;
 import com.carvethsolutions.loglib.Loggable;
 import com.carvethsolutions.loglib.Logger;
 

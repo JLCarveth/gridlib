@@ -8,9 +8,9 @@ package com.carvethsolutions.guilib.listener;
 public interface ResizeListener {
 
     /**
-     *
-     * @param width
-     * @param height
+     * Called to pass resize parameters to the appropriate class.
+     * @param width the value from the width field
+     * @param height the value from the height field
      */
     void resize(int width, int height);
 }

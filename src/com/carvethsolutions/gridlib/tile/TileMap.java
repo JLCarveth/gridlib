@@ -13,7 +13,7 @@ public class TileMap implements Iterable<Tile> {
     private final int width, height;
 
     /**
-     * Returns an iterator over elements of type {@code T}.
+     * Returns an matrix over elements of type {@code T}.
      *
      * @return an Iterator.
      */
