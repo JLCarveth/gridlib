@@ -18,9 +18,9 @@ public class NumberMatrix extends AbstractMatrix<Integer> {
     }
 
     /**
-     * Populates the
-     * @param min
-     * @param max
+     * Populates the Matrix with random numbers
+     * @param min the min random number
+     * @param max the max random number
      */
     public void populate(int min, int max) {
         Random r = new Random();
