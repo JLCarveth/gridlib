@@ -41,8 +41,13 @@ public abstract class AbstractMatrix<E> {
      * @param y coordinate
      * @throws IndexOutOfBoundsException if x,y lays out of the Matrix's bounds
      */
-    public abstract void insertData(E e, int x, int y)
-        throws IndexOutOfBoundsException;
+    public void insertData(E e, int x, int y) throws IndexOutOfBoundsException {
+        if (x > width - 1 || x < 0
+                || y > width - 1 || y < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        data[y][x] = e;
+    }
 
     /**
      * Returns data at that location in the matrix, if any exists
@@ -51,8 +56,13 @@ public abstract class AbstractMatrix<E> {
      * @return the data contained at x,y
      * @throws IndexOutOfBoundsException if x,y, lays out of the Matrix's bounds.
      */
-    public abstract E getDataInMatrix(int x, int y)
-        throws IndexOutOfBoundsException;
+    public E getDataInMatrix(int x, int y) throws IndexOutOfBoundsException {
+        if (x > width - 1 || x < 0
+                || y > width - 1 || y < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        return data[y][x];
+    }
 
     /**
      * Clears the data at the given position
@@ -61,7 +71,7 @@ public abstract class AbstractMatrix<E> {
      * @return the data at that location, if any
      * @throws IndexOutOfBoundsException
      */
-    public E clearData(int x, int y) {
+    public E clearData(int x, int y) throws IndexOutOfBoundsException {
         if (x > width - 1 || x < 0
                 || y > width - 1 || y < 0) {
             throw new IndexOutOfBoundsException();
