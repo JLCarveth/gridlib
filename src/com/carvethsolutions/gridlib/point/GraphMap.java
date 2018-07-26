@@ -2,12 +2,12 @@ package com.carvethsolutions.gridlib.point;
 
 import com.carvethsolutions.gridlib.matrix.AbstractMatrix;
 import com.carvethsolutions.gridlib.matrix.MatrixIterator;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
 
 /**
  * Like a TileMap, the GraphMap is a data structure made to store / process Point objects in a 2D array
+ * Not done yet I don't think. Haven't worked on this in months...
  *
  * @author John on 5/8/2018
  * @project gridlib
@@ -33,7 +33,6 @@ public class GraphMap extends AbstractMatrix<Point> implements Iterable<Point> {
      *
      * @return an Iterator.
      */
-    @NotNull
     @Override
     public Iterator<Point> iterator() {
         return new MatrixIterator<>(this);

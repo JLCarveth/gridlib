@@ -10,7 +10,7 @@ import java.io.IOException;
  * @author John on 5/5/2018
  * @project gridlib
  */
-public class SpriteTile extends Tile<Image> {
+public class SpriteTile extends VisualTile<Image> {
 
 
     public SpriteTile(String image, int x, int y) {
@@ -23,7 +23,7 @@ public class SpriteTile extends Tile<Image> {
     }
 
     /**
-     * Constructor with a default sprite prodived
+     * Constructor with a default sprite provided.
      */
     public SpriteTile(int x, int y) {
         this("res/grass.png", x, y);

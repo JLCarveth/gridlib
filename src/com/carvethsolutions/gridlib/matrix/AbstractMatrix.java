@@ -11,6 +11,27 @@ public abstract class AbstractMatrix<E> {
 
     private final int width,height;
 
+    public AbstractMatrix(E[][] data) {
+        this.data = data;
+
+        width = data[0].length;
+        height = data.length;
+    }
+
+    public AbstractMatrix(int size) {
+        width = size;
+        height = size;
+
+        data = (E[][]) new Object[size][size];
+    }
+
+    public AbstractMatrix(int width, int height) {
+        this.width = width;
+        this.height = height;
+
+        data = (E[][]) new Object[height][width];
+    }
+
     public E[][] getData() { return data; }
 
     /**
@@ -33,22 +54,21 @@ public abstract class AbstractMatrix<E> {
     public abstract E getDataInMatrix(int x, int y)
         throws IndexOutOfBoundsException;
 
-    public AbstractMatrix(E[][] data) {
-        this.data = data;
-
-        width = data[0].length;
-        height = data.length;
-    }
-
-    public AbstractMatrix(int size) {
-        this(size,size);
-    }
-
-    public AbstractMatrix(int width, int height) {
-        this.width = width;
-        this.height = height;
-
-        data = (E[][]) new Object[height][width];
+    /**
+     * Clears the data at the given position
+     * @param x the x coordinate
+     * @param y the y coordinate
+     * @return the data at that location, if any
+     * @throws IndexOutOfBoundsException
+     */
+    public E clearData(int x, int y) {
+        if (x > width - 1 || x < 0
+                || y > width - 1 || y < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        E d = data[y][x];
+        data[y][x] = null;
+        return d;
     }
 
     public int getWidth() {

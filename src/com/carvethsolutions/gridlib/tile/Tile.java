@@ -45,14 +45,6 @@ public abstract class Tile<T> {
     }
 
     /**
-     * This function is called when the tile needs to draw some data onto a Graphics object.
-     *
-     * @param g the graphics object onto which the tile will paint what it needs to
-     * @param gridScale used to scale the tile drawing to the same size as others
-     */
-    public abstract void paint(Graphics g, int gridScale);
-
-    /**
      * Removes any data from the tile
      * @return the data, if any
      */
@@ -74,5 +66,15 @@ public abstract class Tile<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    /**
+     * Returns the distance between two points.
+     * @param tile the other tile to measure distance between
+     * @return the distance between the two tiles.
+     */
+    public double getEuclideanDistance(Tile tile) {
+        return Math.sqrt(Math.pow((this.x - tile.x),2.0)
+                + Math.pow((this.y - tile.y), 2.0));
     }
 }
