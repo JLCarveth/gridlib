@@ -6,12 +6,11 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * An implementation of a Tile that holds an image.
+ * An implementation of a Tile that holds a String to an image (the image's location)
  * @author John on 5/5/2018
  * @project gridlib
  */
-public class SpriteTile extends VisualTile<Image> {
-
+public class SpriteTile extends Tile<Image> {
 
     public SpriteTile(String image, int x, int y) {
         super(x,y);
@@ -26,7 +25,7 @@ public class SpriteTile extends VisualTile<Image> {
      * Constructor with a default sprite provided.
      */
     public SpriteTile(int x, int y) {
-        this("res/grass.png", x, y);
+        this("./res/grass.png", x, y);
     }
 
     /**
@@ -37,8 +36,8 @@ public class SpriteTile extends VisualTile<Image> {
      */
     @Override
     public void paint(Graphics g, int gridScale) {
-        this.setData(this.getData().getScaledInstance(gridScale, gridScale, Image.SCALE_FAST));
-        g.drawImage(this.getData(), this.getX() * gridScale, this.getY() * gridScale, null);
+        Image image = this.getData().getScaledInstance(gridScale, gridScale, Image.SCALE_FAST);
+        g.drawImage(image, this.getX() * gridScale, this.getY() * gridScale, null);
     }
 
     /**
@@ -53,4 +52,10 @@ public class SpriteTile extends VisualTile<Image> {
 
         return image;
     }
+
+    @Override
+    public String toString() {
+        return "SpriteTile{x: "+this.getX()+", y: "+this.getY()+"}";
+    }
+
 }

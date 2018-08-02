@@ -1,38 +1,45 @@
 package com.carvethsolutions.gridlib.matrix;
 
+import java.lang.reflect.Array;
+
 /**
  * Class representing a Matrix object
  * @author John on 5/8/2018
  * @project gridlib
  */
-public abstract class AbstractMatrix<E> {
+public abstract class AbstractMatrix<E> implements Iterable<E>{
 
     private E[][] data;
 
+    private final Class<? extends E> clss;
+
     private final int width,height;
 
-    public AbstractMatrix(E[][] data) {
-        this.data = data;
-
-        width = data[0].length;
-        height = data.length;
-    }
-
-    public AbstractMatrix(int size) {
+    @SuppressWarnings("unchecked")
+    public AbstractMatrix(int size, Class<? extends E> clss) {
         width = size;
         height = size;
 
-        data = (E[][]) new Object[size][size];
+        this.clss = clss;
+
+        data = (E[][]) Array.newInstance(clss, size,size);
     }
 
-    public AbstractMatrix(int width, int height) {
+
+    @SuppressWarnings("unchecked")
+    public AbstractMatrix(int height, int width, Class<? extends E> clss) {
         this.width = width;
         this.height = height;
 
-        data = (E[][]) new Object[height][width];
+        this.clss = clss;
+        data = (E[][]) Array.newInstance(clss,height,width);
     }
 
     public E[][] getData() { return data; }
+
+    public void setData(E[][] data) {
+        this.data = data;
+    }
 
     /**
      * Inserts data into the given position within the matrix
@@ -81,6 +88,16 @@ public abstract class AbstractMatrix<E> {
         return d;
     }
 
+    /**
+     * Returns true if the coordinates are within the bounds of the Matrix
+     * @param x
+     * @param y
+     * @return true if the coordinates are within the bounds of the Matrix
+     */
+    public boolean checkBounds(int x, int y) {
+        return (x <= 0 && y <= 0 && x >= this.getWidth() - 1 && y >= this.getHeight());
+    }
+
     public int getWidth() {
         return width;
     }
@@ -88,4 +105,5 @@ public abstract class AbstractMatrix<E> {
     public int getHeight() {
         return height;
     }
+
 }

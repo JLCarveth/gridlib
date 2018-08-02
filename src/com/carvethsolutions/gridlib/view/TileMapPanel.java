@@ -1,16 +1,21 @@
 package com.carvethsolutions.gridlib.view;
 
-import com.carvethsolutions.gridlib.tile.Tile;
+import com.carvethsolutions.gridlib.listener.TileMapObserver;
 import com.carvethsolutions.gridlib.tile.TileMap;
 import com.carvethsolutions.loglib.Loggable;
-import com.carvethsolutions.loglib.Logger;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.Iterator;
+import com.carvethsolutions.gridlib.tile.Tile;
+
 
 /**
  * TileMapPanel graphically represents the data held by a TileMap data structure.
+ * TODO: Add Observer pattern
  */
 public class TileMapPanel extends JPanel implements Loggable {
 
@@ -23,6 +28,8 @@ public class TileMapPanel extends JPanel implements Loggable {
      * How many pixels represent one square on the grid
      */
     private int gridScale = 50;
+
+    private ArrayList<TileMapObserver> observers;
 
     /**
      * Why are making useful comments so hard?
@@ -45,6 +52,8 @@ public class TileMapPanel extends JPanel implements Loggable {
 
         this.setPreferredSize(new Dimension(width,height));
         this.setBackground(Color.WHITE);
+
+        observers = new ArrayList<>();
     }
 
     public TileMapPanel(TileMap tilemap, int gridScale) {
@@ -105,6 +114,37 @@ public class TileMapPanel extends JPanel implements Loggable {
                 g.drawLine(0, y, width, y);
             }
         }
+
+        this.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                notifyObservers(
+                        tilemap.getDataInMatrix(
+                                e.getX() / gridScale,
+                                e.getY() / gridScale));
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+
+        });
     }
 
     public int getGridScale() {
@@ -127,6 +167,25 @@ public class TileMapPanel extends JPanel implements Loggable {
         repaint();
     }
 
+    public void registerObserver(TileMapObserver listener) {
+        observers.add(listener);
+        System.out.println(observers);
+    }
+
+    public void unregisterObserver(TileMapObserver listener) {
+        observers.remove(listener);
+    }
+
+    /**
+     * Notify all observers
+     */
+    public void notifyObservers(Tile tile) {
+        for (TileMapObserver o : observers) {
+            o.onClick(tile);
+        }
+    }
+
+
     @Override
     public String getTag() {
         return "TileMapPanel";
@@ -134,12 +193,13 @@ public class TileMapPanel extends JPanel implements Loggable {
 
     /**
      * Private function to calculate how large to render each tile
+     * We want the panel to have an approximate size of 500x500
      * @param width the width of the tilemap (in tiles)
      * @param height the height of the tilemap (in tiles)
      */
     private void calculateGridScale(int width, int height) {
         int scale;
-        if (width >= height) {
+        if (width > height) {
             double num = (double) 500 / width;
             scale = (int) Math.round(num);
         } else {

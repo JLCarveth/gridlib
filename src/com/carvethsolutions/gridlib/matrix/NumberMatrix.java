@@ -1,20 +1,18 @@
-package com.carvethsolutions.gridlib.tile;
+package com.carvethsolutions.gridlib.matrix;
 
-import com.carvethsolutions.gridlib.matrix.AbstractMatrix;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.Iterator;
 import java.util.Random;
 
 public class NumberMatrix extends AbstractMatrix<Integer> {
-    public NumberMatrix(Integer[][] data) {
-        super(data);
-    }
 
     public NumberMatrix(int size) {
-        super(size);
+        super(size, Integer.class);
     }
 
     public NumberMatrix(int width, int height) {
-        super(width, height);
+        super(height, width, Integer.class);
     }
 
     /**
@@ -38,11 +36,18 @@ public class NumberMatrix extends AbstractMatrix<Integer> {
             StringBuilder rowSB = new StringBuilder();
             for (int x=0; x < getWidth()-1; x++) {
                 rowSB.append(this.getDataInMatrix(x,y));
+                rowSB.append(' ');
             }
             bigSB.append(rowSB.toString());
             bigSB.append("\n");
         }
 
         return bigSB.toString();
+    }
+
+    @NotNull
+    @Override
+    public Iterator<Integer> iterator() {
+        return new MatrixIterator<>(this);
     }
 }

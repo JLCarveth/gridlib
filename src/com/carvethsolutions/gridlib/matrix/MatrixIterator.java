@@ -18,7 +18,8 @@ public class MatrixIterator<T> implements Iterator<T> {
 
     public MatrixIterator(AbstractMatrix matrix) {
         this.matrix = matrix;
-        currentCol = currentRow = 0;
+        currentCol = -1;
+        currentRow = 0;
 
     }
 
@@ -31,7 +32,7 @@ public class MatrixIterator<T> implements Iterator<T> {
      */
     @Override
     public boolean hasNext() {
-        return !(currentRow == matrix.getHeight() - 1 && currentCol == matrix.getWidth() - 1);
+        return !(currentRow == matrix.getHeight() - 1 && currentCol == matrix.getWidth() - 2);
     }
 
     /**
@@ -44,14 +45,14 @@ public class MatrixIterator<T> implements Iterator<T> {
     public T next() {
         T t = null;
         try {
-            t = matrix.getDataInMatrix(currentCol, currentRow);
-
             if (currentCol == matrix.getWidth() - 1) {
                 currentCol = 0;
                 currentRow++;
             } else {
                 currentCol++;
             }
+
+            t = matrix.getDataInMatrix(currentCol, currentRow);
 
         } catch (NoSuchElementException e) {
             e.printStackTrace();

@@ -51,7 +51,7 @@ public class Point {
     }
 
     /**
-     * Connects a point to this point
+     * Connects a point to this point. The same point can not be connected twice, though each point can point to each other.
      * @param p the point with which to form a connection
      * @return true if the connection was made
      */
@@ -60,6 +60,14 @@ public class Point {
             connected.add(p);
             return true;
         } else return false;
+    }
+
+    /**
+     * Removes this point's connection to the given point
+     * @param p the point to remove from this points connections
+     */
+    public void removeConnection(Point p) {
+        connected.remove(p);
     }
 
     /**
@@ -76,5 +84,13 @@ public class Point {
     public boolean isConnectedTo(Point p) {
         return p.getConnected().contains(this)
                 || this.getConnected().contains(p);
+    }
+
+    /**
+     * If the point has no connections.
+     * @return true if the point has no connections
+     */
+    public boolean isIsolated() {
+        return connected.isEmpty();
     }
 }
