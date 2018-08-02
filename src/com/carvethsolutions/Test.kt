@@ -60,4 +60,19 @@ fun main(args: Array<String>) {
     frame2.add(pmp)
     frame2.pack()
     frame2.isVisible = true
+
+    testMatrixAdjacency()
+}
+
+fun testMatrixAdjacency() {
+    val matrix = NumberMatrix(10)
+    matrix.populate(0,9)
+
+    println(matrix.getAdjacentData(0,0))
+    println(matrix.getAdjacentData(0,9))
+    println(matrix.getAdjacentData(9,0))
+    println(matrix.getAdjacentData(9,9))
+    println(matrix.getAdjacentData(3,5))
+
+    println(matrix)
 }

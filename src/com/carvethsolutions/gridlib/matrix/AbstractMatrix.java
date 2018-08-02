@@ -1,6 +1,9 @@
 package com.carvethsolutions.gridlib.matrix;
 
+import com.carvethsolutions.gridlib.exception.CoordinatesOutOfBoundsException;
+
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * Class representing a Matrix object
@@ -58,14 +61,14 @@ public abstract class AbstractMatrix<E> implements Iterable<E>{
 
     /**
      * Returns data at that location in the matrix, if any exists
-     * @param x
-     * @param y
+     * @param x the x coordinate
+     * @param y the y coordinate
      * @return the data contained at x,y
      * @throws IndexOutOfBoundsException if x,y, lays out of the Matrix's bounds.
      */
     public E getDataInMatrix(int x, int y) throws IndexOutOfBoundsException {
         if (x > width - 1 || x < 0
-                || y > width - 1 || y < 0) {
+                || y > height - 1 || y < 0) {
             throw new IndexOutOfBoundsException();
         }
         return data[y][x];
@@ -76,12 +79,14 @@ public abstract class AbstractMatrix<E> implements Iterable<E>{
      * @param x the x coordinate
      * @param y the y coordinate
      * @return the data at that location, if any
-     * @throws IndexOutOfBoundsException
+     * @throws CoordinatesOutOfBoundsException
      */
-    public E clearData(int x, int y) throws IndexOutOfBoundsException {
+    public E clearData(int x, int y) throws CoordinatesOutOfBoundsException {
         if (x > width - 1 || x < 0
                 || y > width - 1 || y < 0) {
-            throw new IndexOutOfBoundsException();
+            throw new CoordinatesOutOfBoundsException(
+                    x,y,
+                    new int[]{this.width,this.height});
         }
         E d = data[y][x];
         data[y][x] = null;
@@ -90,12 +95,12 @@ public abstract class AbstractMatrix<E> implements Iterable<E>{
 
     /**
      * Returns true if the coordinates are within the bounds of the Matrix
-     * @param x
-     * @param y
+     * @param x the x coordinate to check
+     * @param y the y coordinate to check
      * @return true if the coordinates are within the bounds of the Matrix
      */
     public boolean checkBounds(int x, int y) {
-        return (x <= 0 && y <= 0 && x >= this.getWidth() - 1 && y >= this.getHeight());
+        return ((x >= 0 && x < this.getWidth()) && (y >= 0 && y < this.getHeight()));
     }
 
     public int getWidth() {
@@ -104,6 +109,89 @@ public abstract class AbstractMatrix<E> implements Iterable<E>{
 
     public int getHeight() {
         return height;
+    }
+
+    /**
+     * Gets all data adjacent (8-way) to the given point.
+     * A beautifully long method!
+     * @param x the x coordinate
+     * @param y the y coordinate
+     * @return an ArrayList of all data that is adjacent to the given point
+     * @throws CoordinatesOutOfBoundsException if the given coordinates do not exist within the matrix
+     */
+    public ArrayList<E> getAdjacentData(int x, int y)
+            throws CoordinatesOutOfBoundsException {
+        if (!checkBounds(x,y)) {
+            throw new CoordinatesOutOfBoundsException(x,y, new int[]{width,height});
+        }
+        ArrayList<E> adjacent = new ArrayList<>();
+
+        if (x == 0) {
+            // left side x==0
+            if (y == 0) {
+                // Top Left Corner
+                adjacent.add(this.getDataInMatrix(x+1,y));
+                adjacent.add(this.getDataInMatrix(x+1,y+1));
+                adjacent.add(this.getDataInMatrix(x,y+1));
+            } else if (y == height-1) {
+                // Bottom left corner
+                adjacent.add(this.getDataInMatrix(x,y-1));
+                adjacent.add(this.getDataInMatrix(x+1,y-1));
+                adjacent.add(this.getDataInMatrix(x+1,y));
+            } else {
+                // left side
+                adjacent.add(this.getDataInMatrix(x,y+1));
+                adjacent.add(this.getDataInMatrix(x,y-1));
+                adjacent.add(this.getDataInMatrix(x+1,y));
+                adjacent.add(this.getDataInMatrix(x+1,y-1));
+                adjacent.add(this.getDataInMatrix(x+1,y+1));
+            }
+        } else if (x == width-1) {
+            // Right side
+            if (y == 0) {
+                // Top right corner
+                adjacent.add(this.getDataInMatrix(x,1));
+                adjacent.add(this.getDataInMatrix(x-1,1));
+                adjacent.add(this.getDataInMatrix(x-1,0));
+            } else if (y == height-1) {
+                //Bottom right corner
+                adjacent.add(this.getDataInMatrix(x-1,y-1));
+                adjacent.add(this.getDataInMatrix(x,y-1));
+                adjacent.add(this.getDataInMatrix(x-1,y));
+            } else {
+                // Right side
+                adjacent.add(this.getDataInMatrix(x-1,y-1));
+                adjacent.add(this.getDataInMatrix(x-1,y));
+                adjacent.add(this.getDataInMatrix(x,y+1));
+                adjacent.add(this.getDataInMatrix(x-1,y+1));
+                adjacent.add(this.getDataInMatrix(x,y-1));
+            }
+        } else if (y == 0) {
+            // Top row. We know x != 0, x != max
+            adjacent.add(this.getDataInMatrix(x-1,y));
+            adjacent.add(this.getDataInMatrix(x-1,y+1));
+            adjacent.add(this.getDataInMatrix(x,y+1));
+            adjacent.add(this.getDataInMatrix(x+1,y+1));
+            adjacent.add(this.getDataInMatrix(x+1,y));
+        } else if (y == height-1) {
+            // Bottom row. We know x !=0, x != max
+            adjacent.add(this.getDataInMatrix(x-1,y));
+            adjacent.add(this.getDataInMatrix(x-1,y-1));
+            adjacent.add(this.getDataInMatrix(x,y-1));
+            adjacent.add(this.getDataInMatrix(x+1,y-1));
+            adjacent.add(this.getDataInMatrix(x+1,y));
+        } else {
+            // Within the grid, with 8 neighbors.
+            adjacent.add(this.getDataInMatrix(x,y-1));
+            adjacent.add(this.getDataInMatrix(x,y+1));
+            adjacent.add(this.getDataInMatrix(x-1,y));
+            adjacent.add(this.getDataInMatrix(x-1,y+1));
+            adjacent.add(this.getDataInMatrix(x-1,y-1));
+            adjacent.add(this.getDataInMatrix(x+1,y+1));
+            adjacent.add(this.getDataInMatrix(x+1,y));
+            adjacent.add(this.getDataInMatrix(x+1,y-1));
+        }
+        return adjacent;
     }
 
 }

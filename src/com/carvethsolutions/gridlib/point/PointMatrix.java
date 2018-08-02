@@ -1,6 +1,6 @@
 package com.carvethsolutions.gridlib.point;
 
-import com.carvethsolutions.gridlib.exception.PointOutOfBoundsException;
+import com.carvethsolutions.gridlib.exception.CoordinatesOutOfBoundsException;
 import com.carvethsolutions.gridlib.matrix.AbstractMatrix;
 import com.carvethsolutions.gridlib.matrix.MatrixIterator;
 import org.jetbrains.annotations.NotNull;
@@ -38,18 +38,18 @@ public class PointMatrix extends AbstractMatrix<Point> {
      * @param x2 x coordinate of the second point
      * @param y2 y coordinate of the second point
      * @return true if the points were connected before, or are connected now.
-     * @throws PointOutOfBoundsException if one of the points is out of bounds.
+     * @throws CoordinatesOutOfBoundsException if one of the points is out of bounds.
      */
     public void connect(int x1, int y1, int x2, int y2)
-            throws PointOutOfBoundsException {
+            throws CoordinatesOutOfBoundsException {
         if (!this.checkBounds(x1,y1)) {
-            throw new PointOutOfBoundsException(
-                    new Point(x1,y1),
+            throw new CoordinatesOutOfBoundsException(
+                    x1,y1,
                     new int[]{this.getSize(), this.getSize()});
         }
         if (!this.checkBounds(x2,y2)) {
-            throw new PointOutOfBoundsException(
-                    new Point(x2,y2),
+            throw new CoordinatesOutOfBoundsException(
+                    x2,y2,
                     new int[]{this.getSize(), this.getSize()});
         }
 
@@ -67,15 +67,15 @@ public class PointMatrix extends AbstractMatrix<Point> {
      * @param y2 Point2 y coordinate
      */
     public void disconnect(int x1, int y1, int x2, int y2)
-            throws PointOutOfBoundsException {
+            throws CoordinatesOutOfBoundsException {
         if (!this.checkBounds(x1,y1)) {
-            throw new PointOutOfBoundsException(
-                    new Point(x1,y1),
+            throw new CoordinatesOutOfBoundsException(
+                    x1,y1,
                     new int[]{this.getSize(), this.getSize()});
         }
         if (!this.checkBounds(x2,y2)) {
-            throw new PointOutOfBoundsException(
-                    new Point(x2,y2),
+            throw new CoordinatesOutOfBoundsException(
+                    x2,y2,
                     new int[]{this.getSize(), this.getSize()});
         }
 
@@ -90,12 +90,12 @@ public class PointMatrix extends AbstractMatrix<Point> {
      * @param x the x coordinate
      * @param y the y coordinate
      * @return all points to which the given point was connected to, if any
-     * @throws PointOutOfBoundsException if the provided point is out of bounds.
+     * @throws CoordinatesOutOfBoundsException if the provided point is out of bounds.
      */
     public ArrayList<Point> getConnections(int x, int y)
-            throws PointOutOfBoundsException {
+            throws CoordinatesOutOfBoundsException {
         if (!this.checkBounds(x,y)) {
-            throw new PointOutOfBoundsException(new Point(x,y), new int[]{this.getHeight(),this.getHeight()});
+            throw new CoordinatesOutOfBoundsException(x,y, new int[]{this.getHeight(),this.getHeight()});
         }
 
         return this.getDataInMatrix(x,y).getConnected();
