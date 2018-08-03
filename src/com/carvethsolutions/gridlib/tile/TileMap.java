@@ -1,109 +1,55 @@
 package com.carvethsolutions.gridlib.tile;
 
+import com.carvethsolutions.gridlib.matrix.AbstractMatrix;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Iterator;
-import java.util.NoSuchElementException;
+import com.carvethsolutions.gridlib.matrix.MatrixIterator;
 
 /**
- * TileMap is a data-structure for organizing data in a 2D Array.
+ * TileMap is a data-structure for organizing Tiles in a 2D grid
  */
-public class TileMap implements Iterable<Tile> {
-
-    private Tile[][] data;
-
-    private final int width, height;
-
-    /**
-     * Returns an matrix over elements of type {@code T}.
-     *
-     * @return an Iterator.
-     */
-    @Override
-    public Iterator<Tile> iterator() {
-        return new TileMapIterator();
-    }
-
-    private class TileMapIterator implements Iterator<Tile> {
-
-        private int currentRow, currentColumn;
-
-        public TileMapIterator() {
-            currentRow = currentColumn = 0;
-        }
-
-        /**
-         * Returns {@code true} if the iteration has more elements.
-         * (In other words, returns {@code true} if {@link #next} would
-         * return an element rather than throwing an exception.)
-         *
-         * @return {@code true} if the iteration has more elements
-         */
-        @Override
-        public boolean hasNext() {
-            return !(currentRow == height - 1 && currentColumn == width - 1);
-        }
-
-        /**
-         * Returns the next element in the iteration.
-         *
-         * @return the next element in the iteration
-         * @throws NoSuchElementException if the iteration has no more elements
-         */
-        @Override
-        public Tile next() {
-            Tile tile = new ColorTile(-99,-99);
-            try {
-                tile = data[currentRow][currentColumn];
-
-                if (currentColumn == width - 1) {
-                    currentColumn = 0;
-                    currentRow++;
-                } else {
-                    currentColumn++;
-                }
-
-            } catch (NoSuchElementException e) {
-                e.printStackTrace();
-            }
-
-            return tile;
-        }
-    }
+public class TileMap extends AbstractMatrix<Tile> {
 
     /**
      * Constructor
      * @param width number of tiles
      * @param height number of tiles
      */
-    public TileMap(int width, int height) {
-        this.width = width;
-        this.height = height;
-        data = new Tile[height][width];
+    public TileMap(int height, int width) {
+        super(height,width,Tile.class);
     }
 
     /**
      * Constructor for making a square tilemap
-     * @param size
+     * @param size the number of tiles on one side
      */
     public TileMap(int size) {
-        this(size,size);
-    }
-
-    public void placeTile(Tile t) {
-        data[t.getY()][t.getX()] = t;
+        super(size,size,Tile.class);
     }
 
     /**
-     * Returns the tile located at the x,y coordinates, if one exists
-     * @param x the x coordinate
-     * @param y the y coordinate
-     * @return the tile, if it exists
-     * @throws IndexOutOfBoundsException if the coordinates are not within the bounds of the tilemap
+     * Inserts data into the matrix
+     * @param tile the tile to insert
+     * @throws IndexOutOfBoundsException
      */
-    public Tile getTile(int x, int y) {
-        if (!(x > 0 && x < width && y > 0 && y < height)) {
+    public void insertData(Tile tile) throws IndexOutOfBoundsException {
+        if (tile.getX() > getWidth() - 1 || tile.getX() < 0
+                || tile.getY() > getHeight() - 1 || tile.getY() < 0) {
             throw new IndexOutOfBoundsException();
+        } else {
+            Tile[][] data = this.getData();
+            data[tile.getY()][tile.getX()] = tile;
+            this.setData(data);
         }
-        return data[y][x];
+    }
+
+    @Override
+    public Tile getDataInMatrix(int x, int y) throws IndexOutOfBoundsException {
+        if (x > getWidth() - 1 || x < 0
+                || y > getHeight() - 1 || y < 0) {
+            throw new IndexOutOfBoundsException();
+        } else return this.getData()[y][x];
     }
 
     /**
@@ -112,10 +58,12 @@ public class TileMap implements Iterable<Tile> {
      * @param y
      */
     public void removeTile(int x, int y) {
-        data[y][x].clearData();
+        this.getData()[y][x].clearData();
     }
 
-    public int getHeight() { return height; }
-
-    public int getWidth() { return width; }
+    @NotNull
+    @Override
+    public Iterator<Tile> iterator() {
+        return new MatrixIterator<>(this);
+    }
 }
