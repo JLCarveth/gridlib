@@ -15,7 +15,6 @@ import com.carvethsolutions.gridlib.tile.Tile;
 
 /**
  * TileMapPanel graphically represents the data held by a TileMap data structure.
- * TODO: Add Observer pattern
  */
 public class TileMapPanel extends JPanel implements Loggable {
 
@@ -78,7 +77,7 @@ public class TileMapPanel extends JPanel implements Loggable {
 
     /**
      * Iterate through our TileMap data structure,
-     * @param g
+     * @param g Check the original docs...
      */
     @Override
     public void paintComponent(Graphics g) {
@@ -93,8 +92,6 @@ public class TileMapPanel extends JPanel implements Loggable {
             }
         }
 
-        // Since the matrix stops before the last Tile...
-        // Probably a change to the hasNext() function, or the while loop could fix this without the code repetition
         Tile tile = iterator.next();
         if (tile != null) {
             tile.paint(g, gridScale);
@@ -160,24 +157,34 @@ public class TileMapPanel extends JPanel implements Loggable {
     }
 
     /**
-     * @param gridLinesVisible
+     * Grid line visibility on the panel
+     * @param gridLinesVisible boolean value
      */
     public void setGridLinesVisible(boolean gridLinesVisible) {
         this.gridLinesVisible = gridLinesVisible;
         repaint();
     }
 
+    /**
+     * Registers a new observer to be called when clicks are registered.
+     * @param listener the listener with onClick() implementation
+     */
     public void registerObserver(TileMapObserver listener) {
         observers.add(listener);
         System.out.println(observers);
     }
 
+    /**
+     * Removes the given observer from the TileMapPanel
+     * @param listener the listener to remove.
+     */
     public void unregisterObserver(TileMapObserver listener) {
         observers.remove(listener);
     }
 
     /**
      * Notify all observers
+     * @param tile the tile that was clicked.
      */
     public void notifyObservers(Tile tile) {
         for (TileMapObserver o : observers) {
@@ -185,7 +192,7 @@ public class TileMapPanel extends JPanel implements Loggable {
         }
     }
 
-
+    // Used for logging.
     @Override
     public String getTag() {
         return "TileMapPanel";

@@ -11,7 +11,7 @@ import java.awt.*;
 import java.util.Iterator;
 
 /**
- * TODO Merge the two Panel classes and extract a superclass
+ * TODO Merge the two Panel classes and extract a superclass - If possible/feasible
  */
 public class PointMatrixPanel extends JPanel implements Loggable {
 
@@ -30,8 +30,6 @@ public class PointMatrixPanel extends JPanel implements Loggable {
      */
     private PointMatrix pointMatrix;
 
-    private GraphicsUtil gu = new GraphicsUtil();
-
     public PointMatrixPanel(PointMatrix matrix) {
         pointMatrix = matrix;
         this.size = pointMatrix.getSize() * gridScale;
@@ -43,7 +41,7 @@ public class PointMatrixPanel extends JPanel implements Loggable {
     /**
      * Paints the panel with information from the matrix.
      * There is an offset so the matrix appears central to the panel.
-     * @param g
+     * @param g Check the original docs...
      */
     @Override
     public void paintComponent(Graphics g) {
@@ -59,14 +57,14 @@ public class PointMatrixPanel extends JPanel implements Loggable {
             // If the point is isolated, draw a small grey dot.
             if (point.isIsolated()) {
                 g.setColor(Color.DARK_GRAY);
-                gu.drawCenteredCircleFill(
+                GraphicsUtil.drawCenteredCircleFill(
                         g,
                         point.getX() * gridScale + offset,
                         point.getY() * gridScale + offset,
                         (gridScale / 20));
                 g.setColor(Color.BLACK);
             } else {
-                gu.drawCenteredCircleFill(g,
+                GraphicsUtil.drawCenteredCircleFill(g,
                         point.getX() * gridScale + offset,
                         point.getY() * gridScale + offset,
                         2 * (gridScale / 20));
@@ -88,7 +86,7 @@ public class PointMatrixPanel extends JPanel implements Loggable {
 
     /**
      * Change the gridScale, and recalculate the panel size.
-     * @param gridScale
+     * @param gridScale the new gridScale
      */
     public void setGridScale(int gridScale) {
         this.gridScale = gridScale;

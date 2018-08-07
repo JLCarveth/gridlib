@@ -15,12 +15,14 @@ public class MatrixIterator<T> implements Iterator<T> {
 
     private int currentCol, currentRow;
 
-
-    public MatrixIterator(AbstractMatrix matrix) {
+    /**
+     * Initialize a new Iterator.
+     * @param matrix the matrix that will be iterated over.
+     */
+    public MatrixIterator(AbstractMatrix<T> matrix) {
         this.matrix = matrix;
         currentCol = -1;
         currentRow = 0;
-
     }
 
     /**

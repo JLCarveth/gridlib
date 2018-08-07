@@ -6,7 +6,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
- * Class representing a Matrix object
+ * An abstract class representing a Matrix object (2D array)
  * @author John on 5/8/2018
  * @project gridlib
  */
@@ -18,6 +18,11 @@ public abstract class AbstractMatrix<E> implements Iterable<E>{
 
     private final int width,height;
 
+    /**
+     * Creates a new <i>square</i> AbstractMatrix of given size, and holds data of type clss
+     * @param size the number of objects spanning one side of the matrix
+     * @param clss the class of data the matrix will hold.
+     */
     @SuppressWarnings("unchecked")
     public AbstractMatrix(int size, Class<? extends E> clss) {
         width = size;
@@ -28,7 +33,12 @@ public abstract class AbstractMatrix<E> implements Iterable<E>{
         data = (E[][]) Array.newInstance(clss, size,size);
     }
 
-
+    /**
+     * Creates a new AbstractMatrix object with given width and height.
+     * @param height the number of objects spanning the y-axis
+     * @param width the number of objects spanning the x-axis
+     * @param clss the class of data the matrix will hold.
+     */
     @SuppressWarnings("unchecked")
     public AbstractMatrix(int height, int width, Class<? extends E> clss) {
         this.width = width;
@@ -38,10 +48,21 @@ public abstract class AbstractMatrix<E> implements Iterable<E>{
         data = (E[][]) Array.newInstance(clss,height,width);
     }
 
+    /**
+     * Returns a 2D array of the data within the matrix.
+     * @return a 2D array of the data within the matrix.
+     */
     public E[][] getData() { return data; }
 
-    public void setData(E[][] data) {
-        this.data = data;
+    /**
+     * Overwrites all data within the matrix. insertData should be used
+     * for most cases.
+     * @param data the new data, must be of the same dimensions.
+     */
+    public void setData(E[][] data) throws IllegalArgumentException{
+        if (data.length != getHeight() || data[0].length != getWidth()) {
+            throw new IllegalArgumentException("Given 2D array must have the same dimensions.");
+        } else { this.data = data; }
     }
 
     /**
@@ -49,12 +70,11 @@ public abstract class AbstractMatrix<E> implements Iterable<E>{
      * @param e data to insert
      * @param x coordinate
      * @param y coordinate
-     * @throws IndexOutOfBoundsException if x,y lays out of the Matrix's bounds
+     * @throws CoordinatesOutOfBoundsException if x,y lays out of the Matrix's bounds
      */
-    public void insertData(E e, int x, int y) throws IndexOutOfBoundsException {
-        if (x > width - 1 || x < 0
-                || y > width - 1 || y < 0) {
-            throw new IndexOutOfBoundsException();
+    public void insertData(E e, int x, int y) throws CoordinatesOutOfBoundsException {
+        if (!checkBounds(x,y)) {
+            throw new CoordinatesOutOfBoundsException(x,y, new int[]{width,height});
         }
         data[y][x] = e;
     }
@@ -64,12 +84,11 @@ public abstract class AbstractMatrix<E> implements Iterable<E>{
      * @param x the x coordinate
      * @param y the y coordinate
      * @return the data contained at x,y
-     * @throws IndexOutOfBoundsException if x,y, lays out of the Matrix's bounds.
+     * @throws CoordinatesOutOfBoundsException if x,y, lays out of the Matrix's bounds.
      */
-    public E getDataInMatrix(int x, int y) throws IndexOutOfBoundsException {
-        if (x > width - 1 || x < 0
-                || y > height - 1 || y < 0) {
-            throw new IndexOutOfBoundsException();
+    public E getDataInMatrix(int x, int y) throws CoordinatesOutOfBoundsException {
+        if (!checkBounds(x,y)) {
+            throw new CoordinatesOutOfBoundsException(x,y, new int[]{width,height});
         }
         return data[y][x];
     }
@@ -79,11 +98,10 @@ public abstract class AbstractMatrix<E> implements Iterable<E>{
      * @param x the x coordinate
      * @param y the y coordinate
      * @return the data at that location, if any
-     * @throws CoordinatesOutOfBoundsException
+     * @throws CoordinatesOutOfBoundsException if the given coordinates do not exist in this matrix.
      */
     public E clearData(int x, int y) throws CoordinatesOutOfBoundsException {
-        if (x > width - 1 || x < 0
-                || y > width - 1 || y < 0) {
+        if (!checkBounds(x,y)) {
             throw new CoordinatesOutOfBoundsException(
                     x,y,
                     new int[]{this.width,this.height});

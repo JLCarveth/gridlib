@@ -3,6 +3,7 @@ package com.carvethsolutions.gridlib.point;
 import java.util.ArrayList;
 
 /**
+ * Class that represents a point on a two-dimensional plane.
  * @author John on 5/8/2018
  * @project gridlib
  */
@@ -79,7 +80,7 @@ public class Point {
 
     /**
      * Returns true if the two points are connected
-     * @param p
+     * @param p the point to check for a connection
      */
     public boolean isConnectedTo(Point p) {
         return p.getConnected().contains(this)
