@@ -66,11 +66,18 @@ public abstract class Tile<T> {
         return y;
     }
 
-
+    /**
+     * Returns the data held by the Tile
+     * @return the data held by the Tile
+     */
     public T getData() {
         return data;
     }
 
+    /**
+     * Assigns data to the Tile
+     * @param data the data the Tile will hold.
+     */
     public void setData(T data) {
         this.data = data;
     }
@@ -93,7 +100,7 @@ public abstract class Tile<T> {
      */
     public abstract void paint(Graphics g, int gridScale);
 
-    public String getString() {
+    public String toString() {
         return "Tile{x: "+this.getX()+", y: "+this.getY()+"}";
     }
 }

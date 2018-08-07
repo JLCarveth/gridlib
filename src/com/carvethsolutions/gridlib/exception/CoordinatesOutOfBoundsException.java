@@ -1,8 +1,10 @@
 package com.carvethsolutions.gridlib.exception;
 
-import com.carvethsolutions.gridlib.point.Point;
-
-public class CoordinatesOutOfBoundsException extends Exception {
+/**
+ * This exception is thrown whenever coordinates provided lie out of bounds
+ * to the context to which they were applied.
+ */
+public class CoordinatesOutOfBoundsException extends RuntimeException {
 
     /**
      * Throws a generic exception

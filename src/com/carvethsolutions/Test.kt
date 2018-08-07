@@ -11,15 +11,20 @@ import com.carvethsolutions.guilib.SDFrame
 import java.awt.Color
 
 /**
- * An Example of how the TileMap can be used with Tile objects and a TileMapPanel
+ * A very messy test file I have been using to demonstrate how the libraries can be used.
  */
 fun main(args: Array<String>) {
+    // Create a NumberMatrix, n=50
     val matrix = NumberMatrix(50)
+    // Populate that matrix (currently filled with null) with values between 0-9
     matrix.populate(0,9)
 
+    // Create a TileMap object, 16 tiles by 16 tiles
     val tileMap = TileMap(16)
+    // Create a TileMapPanel object, linking it to the TileMap
     val tmp = TileMapPanel(tileMap)
 
+    // Fill in the TileMap with Tile objects
     for (x in 0..15) {
         for (y in 0..15) {
             if (x == 7 && y == 8) {
@@ -30,13 +35,19 @@ fun main(args: Array<String>) {
         }
     }
 
-
+    //TileMapPanel allows us to register Observer classes, that will be called
+    //whenever the panel detects a click.
     tmp.registerObserver({
         println("Click Detected... @$it")
     })
 
+    // Just another insertData test. Notice our TileMap can hold/display
+    // all subclasses of Tile.
     tileMap.insertData(ColorTile(Color.ORANGE, 0,0))
+
+    // A Self-Destructing Frame
     val frame = SDFrame()
+    // Add out TileMapPanel
     frame.add(tmp)
     frame.pack()
     frame.isVisible = true

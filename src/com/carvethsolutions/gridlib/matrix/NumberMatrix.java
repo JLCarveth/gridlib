@@ -5,6 +5,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Iterator;
 import java.util.Random;
 
+/**
+ * An implementation of @{link #AbstractMatrix} that holds Integer objects.
+ */
 public class NumberMatrix extends AbstractMatrix<Integer> {
 
     public NumberMatrix(int size) {
@@ -31,6 +34,11 @@ public class NumberMatrix extends AbstractMatrix<Integer> {
         }
     }
 
+    /**
+     * Note: Unless each number within the matrix is of the same digit count,
+     * then the matrix will not print perfectly square.
+     * @return String representation of the matrix
+     */
     public String toString() {
         StringBuilder bigSB = new StringBuilder();
         for (int y=0; y < getHeight(); y++) {

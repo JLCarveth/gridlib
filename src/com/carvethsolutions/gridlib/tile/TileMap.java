@@ -1,5 +1,6 @@
 package com.carvethsolutions.gridlib.tile;
 
+import com.carvethsolutions.gridlib.exception.CoordinatesOutOfBoundsException;
 import com.carvethsolutions.gridlib.matrix.AbstractMatrix;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,12 +32,12 @@ public class TileMap extends AbstractMatrix<Tile> {
     /**
      * Inserts data into the matrix
      * @param tile the tile to insert
-     * @throws IndexOutOfBoundsException
+     * @throws CoordinatesOutOfBoundsException
      */
-    public void insertData(Tile tile) throws IndexOutOfBoundsException {
-        if (tile.getX() > getWidth() - 1 || tile.getX() < 0
-                || tile.getY() > getHeight() - 1 || tile.getY() < 0) {
-            throw new IndexOutOfBoundsException();
+    public void insertData(Tile tile) throws CoordinatesOutOfBoundsException {
+        if (!checkBounds(tile.getX(),tile.getY())) {
+            throw new CoordinatesOutOfBoundsException(tile.getX(),
+                    tile.getY(), new int[]{getWidth(),getHeight()});
         } else {
             Tile[][] data = this.getData();
             data[tile.getY()][tile.getX()] = tile;
@@ -44,18 +45,24 @@ public class TileMap extends AbstractMatrix<Tile> {
         }
     }
 
+    /**
+     * Gets the data at a specific point within
+     * @param x the x coordinate
+     * @param y the y coordinate
+     * @return the data at the given coordinates
+     * @throws CoordinatesOutOfBoundsException if the given coords lie out of bounds
+     */
     @Override
-    public Tile getDataInMatrix(int x, int y) throws IndexOutOfBoundsException {
-        if (x > getWidth() - 1 || x < 0
-                || y > getHeight() - 1 || y < 0) {
-            throw new IndexOutOfBoundsException();
+    public Tile getDataInMatrix(int x, int y) throws CoordinatesOutOfBoundsException {
+        if (!checkBounds(x,y)) {
+            throw new CoordinatesOutOfBoundsException();
         } else return this.getData()[y][x];
     }
 
     /**
      * Removes any data from the
-     * @param x
-     * @param y
+     * @param x the x coordinate
+     * @param y the y coordinate
      */
     public void removeTile(int x, int y) {
         this.getData()[y][x].clearData();
