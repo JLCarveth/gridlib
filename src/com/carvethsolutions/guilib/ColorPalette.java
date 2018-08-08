@@ -83,4 +83,8 @@ public class ColorPalette extends JPanel {
             this.add(button);
         }
     }
+
+    public Color getSelectedColor() {
+        return selectedColor;
+    }
 }
