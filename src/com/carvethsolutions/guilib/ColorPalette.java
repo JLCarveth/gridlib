@@ -60,6 +60,11 @@ public class ColorPalette extends JPanel {
         placeButtons();
     }
 
+    /**
+     * Private function for placing the colored buttons correctly,
+     * and highlighting to the user the currently selected color.
+     * TODO: See if instead of Color.RED, inverting the currently selected color will look better.
+     */
     private void placeButtons() {
         this.removeAll();
         revalidate();

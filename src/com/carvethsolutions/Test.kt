@@ -29,6 +29,8 @@ fun main(args: Array<String>) {
         for (y in 0..15) {
             if (x == 7 && y == 8) {
                 tileMap.insertData(ColorTile(Color.RED,x,y))
+            } else if (x == 3) {
+                tileMap.insertData(ColorTile(null, x,y))
             }else {
                 tileMap.insertData(SpriteTile("./res/grass.png",x,y))
             }

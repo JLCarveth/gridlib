@@ -15,6 +15,7 @@ import com.carvethsolutions.gridlib.tile.Tile;
 
 /**
  * TileMapPanel graphically represents the data held by a TileMap data structure.
+ * TODO: Create ZoomedTileMapPanel
  */
 public class TileMapPanel extends JPanel implements Loggable {
 
