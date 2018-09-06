@@ -45,13 +45,7 @@ public class ColorTile extends Tile<Color> {
     @Override
     public void paint(Graphics g, int gridScale) {
         if (this.getData() == null) {
-            Graphics2D g2D = (Graphics2D) g;
-            try {
-                g2D.setPaint(getTransparentTile(gridScale));
-                g2D.fillRect(this.getX() * gridScale, this.getY() * gridScale, gridScale, gridScale);
-            } catch (IOException e) {
-                System.out.println("oWo someone made an upsie wupsie!");
-            }
+            // DO nothing?
         } else {
             g.setColor(this.getData());
             g.fillRect(this.getX() * gridScale, this.getY() * gridScale, gridScale, gridScale);

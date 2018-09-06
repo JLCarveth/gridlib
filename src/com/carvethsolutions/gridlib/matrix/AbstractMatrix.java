@@ -212,4 +212,24 @@ public abstract class AbstractMatrix<E> implements Iterable<E>{
         return adjacent;
     }
 
+    /**
+     *
+     * @return a String representation of the matrix, assuming the data it holds has a valid toString() method.
+     */
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int y=0; y < this.getHeight(); y++) {
+            StringBuilder row = new StringBuilder();
+            for (int x = 0; x < this.getWidth(); x++) {
+                row.append(this.getDataInMatrix(x,y).toString());
+                if (x < this.getWidth() - 1) {
+                    row.append(" ");
+                }
+            }
+            sb.append(row);
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
 }
