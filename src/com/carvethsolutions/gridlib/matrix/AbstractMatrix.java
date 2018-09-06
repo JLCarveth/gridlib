@@ -218,9 +218,10 @@ public abstract class AbstractMatrix<E> implements Iterable<E>{
      */
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int y=0; y < this.getHeight(); y++) {
+        for (int y=0; y < this.getHeight()-1; y++) {
+        for (int y=0; y < this.getHeight()-1; y++) {
             StringBuilder row = new StringBuilder();
-            for (int x = 0; x < this.getWidth(); x++) {
+            for (int x = 0; x < this.getWidth()-1; x++) {
                 row.append(this.getDataInMatrix(x,y).toString());
                 if (x < this.getWidth() - 1) {
                     row.append(" ");
