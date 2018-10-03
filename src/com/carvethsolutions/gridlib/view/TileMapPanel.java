@@ -93,11 +93,6 @@ public class TileMapPanel extends JPanel implements Loggable {
             }
         }
 
-        Tile tile = iterator.next();
-        if (tile != null) {
-            tile.paint(g, gridScale);
-        }
-
         this.setBackground(Color.WHITE);
 
         g.setColor(Color.BLACK);

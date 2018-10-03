@@ -2,10 +2,10 @@ package com.carvethsolutions.gridlib.tile;
 
 import com.carvethsolutions.gridlib.exception.CoordinatesOutOfBoundsException;
 import com.carvethsolutions.gridlib.matrix.AbstractMatrix;
+import com.carvethsolutions.gridlib.matrix.MatrixIterator;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
-import com.carvethsolutions.gridlib.matrix.MatrixIterator;
 
 /**
  * TileMap is a data-structure for organizing Tiles in a 2D grid

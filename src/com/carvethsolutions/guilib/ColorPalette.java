@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class ColorPalette extends JPanel {
 
+    // The default list of colors on te palette
     private List<Color> colors = Arrays.asList(
             Color.BLUE,
             Color.RED,
@@ -91,5 +92,22 @@ public class ColorPalette extends JPanel {
 
     public Color getSelectedColor() {
         return selectedColor;
+    }
+
+    /**
+     * Replaces the specific color in the palette
+     * @param oldColor the old color, to be replaced
+     * @param newColor the new color
+     * @return true if the colors were replaced.
+     */
+    public boolean replaceColor(Color oldColor, Color newColor) {
+        if (!this.colors.contains(oldColor)) {
+            return false;
+        }
+
+        int index = this.colors.indexOf(oldColor);
+        this.colors.remove(index);
+        this.colors.add(index, newColor);
+        return true;
     }
 }

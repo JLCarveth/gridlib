@@ -34,7 +34,7 @@ public class MatrixIterator<T> implements Iterator<T> {
      */
     @Override
     public boolean hasNext() {
-        return !(currentRow == matrix.getHeight() - 1 && currentCol == matrix.getWidth() - 2);
+        return !(currentRow == matrix.getHeight() - 1 && currentCol == matrix.getWidth() - 1);
     }
 
     /**
