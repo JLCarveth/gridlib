@@ -1,7 +1,6 @@
 package com.carvethsolutions.gridlib.matrix;
 
-import com.carvethsolutions.gridlib.matrix.NumberMatrix;
-
+import org.junit.jupiter.api.BeforeEach;
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,7 +9,7 @@ class MatrixIteratorTest {
 
     private NumberMatrix numberMatrix;
 
-    @org.junit.jupiter.api.BeforeEach
+    @BeforeEach
     void setupMatrix() {
         numberMatrix = new NumberMatrix(4);
         int n = 0;
