@@ -3,3 +3,7 @@
 
 # IntelliJ BS
 .idea/
+*.iml
+
+# META-INF
+.META-INF/*
