@@ -1,5 +1,5 @@
 # Logfile from Logger
 *.log
 
-# IntelliJ
-JLC.idea
+# IntelliJ BS
+.idea/
