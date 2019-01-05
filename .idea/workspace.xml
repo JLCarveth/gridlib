@@ -7,11 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="025ecab3-2f1e-4b01-b994-9d7537137ca9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/carvethsolutions/colorlib/ColorGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/com/carvethsolutions/colorlib/ColorGeneratorTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/test/com/carvethsolutions/test/gridlib/matrix/MatrixIteratorTest.java" afterPath="$PROJECT_DIR$/test/com/carvethsolutions/gridlib/matrix/MatrixIteratorTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gridlib.iml" afterPath="$PROJECT_DIR$/.idea/gridlib.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/carvethsolutions/Main.kt" afterPath="$PROJECT_DIR$/src/com/carvethsolutions/Main.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/carvethsolutions/gridlib/view/TileMapPanel.java" afterPath="$PROJECT_DIR$/src/com/carvethsolutions/gridlib/view/TileMapPanel.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,10 +41,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ColorGenerator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ColorGenerator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/colorlib/ColorGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-799">
+            <state relative-caret-position="272">
               <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -92,11 +89,33 @@
       <file leaf-file-name="TileMap.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/gridlib/tile/TileMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1037">
+            <state relative-caret-position="1071">
               <caret line="74" column="5" lean-forward="false" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
               <folding>
                 <element signature="e#2169#2170#0" expanded="true" />
                 <element signature="e#2218#2219#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphicsUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/gridlib/util/GraphicsUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TileMapPanel.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/gridlib/view/TileMapPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="113">
+              <caret line="146" column="43" lean-forward="false" selection-start-line="146" selection-start-column="43" selection-end-line="146" selection-end-column="43" />
+              <folding>
+                <marker date="1546654407769" expanded="true" signature="5500:5752" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -161,7 +180,6 @@
         <option value="$PROJECT_DIR$/src/com/carvethsolutions/gridlib/iterator/MatrixIterator.java" />
         <option value="$PROJECT_DIR$/src/com/carvethsolutions/gridlib/matrix/MatrixIterator.java" />
         <option value="$PROJECT_DIR$/src/com/carvethsolutions/gridlib/point/GraphMap.java" />
-        <option value="$PROJECT_DIR$/src/com/carvethsolutions/gridlib/view/TileMapPanel.java" />
         <option value="$PROJECT_DIR$/src/com/carvethsolutions/gridlib/view/GraphMapPanel.java" />
         <option value="$PROJECT_DIR$/src/com/carvethsolutions/guilib/listener/ResizeListener.java" />
         <option value="$PROJECT_DIR$/src/com/carvethsolutions/gridlib/point/Point.java" />
@@ -173,13 +191,15 @@
         <option value="$PROJECT_DIR$/src/com/carvethsolutions/colorlib/Main.java" />
         <option value="$PROJECT_DIR$/test/com/carvethsolutions/colorlib/ColorGeneratorTest.java" />
         <option value="$PROJECT_DIR$/src/com/carvethsolutions/colorlib/ColorGenerator.java" />
+        <option value="$PROJECT_DIR$/src/com/carvethsolutions/gridlib/view/TileMapPanel.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-10" />
-    <option name="width" value="1584" />
-    <option name="height" value="1932" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-22" />
+    <option name="y" value="4" />
+    <option name="width" value="3020" />
+    <option name="height" value="1930" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -254,6 +274,22 @@
               <item name="carvethsolutions" type="462c0819:PsiDirectoryNode" />
               <item name="gridlib" type="462c0819:PsiDirectoryNode" />
               <item name="tile" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gridlib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gridlib" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="carvethsolutions" type="462c0819:PsiDirectoryNode" />
+              <item name="gridlib" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gridlib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gridlib" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="carvethsolutions" type="462c0819:PsiDirectoryNode" />
+              <item name="gridlib" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="gridlib" type="b2602c69:ProjectViewProjectNode" />
@@ -589,7 +625,8 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-5" y="0" width="792" height="966" extended-state="0" />
+    <frame x="-6" y="-6" width="1513" height="973" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -599,12 +636,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.332533" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297619" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297619" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297619" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297619" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5653951" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28522336" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24948454" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -640,14 +677,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/guilib/listener/ResizeListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="52" lean-forward="false" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/gridlib/point/Point.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
@@ -665,7 +694,7 @@
         <state relative-caret-position="510">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding>
-            <marker date="1546393302228" expanded="true" signature="5411:5663" ph="{...}" />
+            <marker date="1546654407769" expanded="true" signature="5500:5752" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -717,7 +746,7 @@
         <state relative-caret-position="510">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding>
-            <marker date="1546393302228" expanded="true" signature="5411:5663" ph="{...}" />
+            <marker date="1546654407769" expanded="true" signature="5500:5752" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -770,7 +799,7 @@
         <state relative-caret-position="510">
           <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding>
-            <marker date="1546393302228" expanded="true" signature="5411:5663" ph="{...}" />
+            <marker date="1546654407769" expanded="true" signature="5500:5752" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -870,16 +899,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/gridlib/view/TileMapPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding>
-            <marker date="1546393302228" expanded="true" signature="5411:5663" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/gridlib/view/GraphMapPanel.java" />
     <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/guilib/listener/ResizeListener.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -931,17 +950,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/gridlib/tile/TileMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="74" column="5" lean-forward="false" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
-          <folding>
-            <element signature="e#2169#2170#0" expanded="true" />
-            <element signature="e#2218#2219#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/gridlib/matrix/AbstractMatrix.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -949,16 +957,6 @@
           <folding>
             <element signature="e#720#750#0" expanded="true" />
             <element signature="e#1229#1259#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/guilib/ColorPalette.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-692">
-          <caret line="46" column="16" lean-forward="false" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -987,9 +985,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/colorlib/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/guilib/ColorPalette.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-692">
+          <caret line="46" column="16" lean-forward="false" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/colorlib/ColorGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-799">
+        <state relative-caret-position="272">
           <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -997,11 +1013,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/colorlib/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/gridlib/tile/TileMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+        <state relative-caret-position="1071">
+          <caret line="74" column="5" lean-forward="false" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+          <folding>
+            <element signature="e#2169#2170#0" expanded="true" />
+            <element signature="e#2218#2219#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/gridlib/util/GraphicsUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/carvethsolutions/gridlib/view/TileMapPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="146" column="43" lean-forward="false" selection-start-line="146" selection-start-column="43" selection-end-line="146" selection-end-column="43" />
+          <folding>
+            <marker date="1546654407769" expanded="true" signature="5500:5752" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
