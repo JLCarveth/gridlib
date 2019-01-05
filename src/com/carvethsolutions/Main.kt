@@ -1,6 +1,6 @@
 package com.carvethsolutions
 
-val GRIDLIB_VERSION = "0.3.12"
+val GRIDLIB_VERSION = "0.4"
 
 fun main(args: Array<String>) {
     println("GridLib v$GRIDLIB_VERSION")

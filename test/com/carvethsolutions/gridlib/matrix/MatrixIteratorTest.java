@@ -1,4 +1,4 @@
-package com.carvethsolutions.test.gridlib.matrix;
+package com.carvethsolutions.gridlib.matrix;
 
 import com.carvethsolutions.gridlib.matrix.NumberMatrix;
 
