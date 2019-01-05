@@ -1,0 +1,5 @@
+# Logfile from Logger
+*.log
+
+# IntelliJ
+.idea
