@@ -144,6 +144,10 @@ public class TileMapPanel extends JPanel implements Loggable {
         return gridScale;
     }
 
+    public void setGridScale(int gridScale) {
+        this.gridScale = gridScale;
+    }
+
     public TileMap getTilemap() {
         return tilemap;
     }
