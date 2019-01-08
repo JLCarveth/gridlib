@@ -4,8 +4,8 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * An iterator to iterate through Matrix / 2D Array data structures
- *
+ * An iterator to iterate through AbstractMatrix data structures.
+ * The iterator works top down, row by row left to right.
  * @author John on 5/8/2018
  * @project gridlib
  */
